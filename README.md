@@ -22,5 +22,48 @@ The practical applications demonstrated in this project include:
 
 The repository includes Jupyter Notebooks that detail these implementations, providing a hands-on approach to learning and understanding these complex concepts.
 
+## Pair Trading Strategy Implementation Pipeline
+ **Step 1: Setup and data Retrieval :**
+ '''bash
+  !pip install yfinance pandas_ta pykalman
+  import yfinance as yf
+  import pandas as pd
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  from pykalman import KalmanFilter
+  from statsmodels.tsa.stattools import coint
+  import warnings
+  warnings.filterwarnings('ignore')
+
+**Step 2: Load data :**
+Load the data of the stocks from their stock tickers and download the data.
+
+**Step 3: Visualize data**
+The stock data is visualized to understand trends and behaviors of different stocks over time.
+
+**Step 4: Identifying Cointegrated Pairs :**
+Pairs of stocks that exhibit a statistical relationship are identified using the cointegration test. These stocks would then be used in the pairs trading strategy.
+
+**Step 5: Kalman Filter Application :**
+The Kalman Filter is used to estimate the hidden state of pairs and refine the trading signals.This is basically applied to make the signals more accurate by updating the hedge ratio from time to time and not assuming it to be static always.
+
+**Step 6: Strategy Implementation and Backtesting :**
+The trading strategy is implemented by generating signals based on the z-score of the spread between pairs and backtesting these signals to assess potential profitability.
+Assigning -1 and +1 as the Z-scores and also marking the long and short positions of the stocks.
+
+**Results Visualtion :**
+The performance of the trading strategy is visualized to evaluate the effectiveness of pair trading.
+  '''bash
+  for result in results:
+      plt.figure(figsize=(12, 6))
+      plt.plot(result['cumulative returns'])
+      plt.title('Cumulative Returns for Pair {}'.format(result['pair']))
+      plt.show()
+
+
+This pipeline encapsulates the complete workflow from data handling to final performance visualization, providing a robust framework for exploring and implementing Pair Trading strategies using Python and financial data APIs.
+ 
+ 
+
 ## Getting Involved
 Contributions to this project are more than welcome. Feel free to fork the repository, make proposed changes, and submit pull requests. Let's collaborate to enhance this resource and help it grow!
