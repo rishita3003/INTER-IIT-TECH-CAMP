@@ -24,7 +24,7 @@ The repository includes Jupyter Notebooks that detail these implementations, pro
 
 ## Pair Trading Strategy Implementation Pipeline
  **Step 1: Setup and data Retrieval :**
- '''bash
+ ```bash
   !pip install yfinance pandas_ta pykalman
   import yfinance as yf
   import pandas as pd
@@ -34,6 +34,7 @@ The repository includes Jupyter Notebooks that detail these implementations, pro
   from statsmodels.tsa.stattools import coint
   import warnings
   warnings.filterwarnings('ignore')
+```
 
 **Step 2: Load data :**
 Load the data of the stocks from their stock tickers and download the data.
@@ -53,13 +54,13 @@ Assigning -1 and +1 as the Z-scores and also marking the long and short position
 
 **Results Visualtion :**
 The performance of the trading strategy is visualized to evaluate the effectiveness of pair trading.
-  '''bash
+   ```bash
   for result in results:
       plt.figure(figsize=(12, 6))
       plt.plot(result['cumulative returns'])
       plt.title('Cumulative Returns for Pair {}'.format(result['pair']))
       plt.show()
-
+```
 
 This pipeline encapsulates the complete workflow from data handling to final performance visualization, providing a robust framework for exploring and implementing Pair Trading strategies using Python and financial data APIs.
  
